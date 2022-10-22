@@ -38,6 +38,10 @@ gill09_harmonicity <- function(x, tonic = 0L) {
   checkmate::qassert(tonic, "X1")
   x <- hrep::pi_chord(x)
   chord <- rationalise_chord(x, tonic)
+  if (ncol(chord)==1) {
+    chord = cbind(chord,chord)
+    class(chord) = 'rational_chord'
+  }
   fundamental <- gcd(chord)
   max_freq <- lcm(chord)
   chord_harmonics <- expand_harmonics(chord, max_freq)

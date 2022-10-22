@@ -15,7 +15,7 @@ rationalise_chord.pi_chord <- function(x, tonic) {
   x <- hrep::tp(x, - tonic)
   octave <- floor(hrep::get_bass_pi(x) / 12)
   x <- hrep::tp(x, - 12 * octave)
-  sapply(x, rationalise_pitch) %>% rational_chord
+  chord = sapply(x, rationalise_pitch) %>% rational_chord
 }
 
 rationalise_pitch <- function(x) {
